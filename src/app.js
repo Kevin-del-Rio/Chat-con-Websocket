@@ -38,4 +38,9 @@ socketServer.on('connection', socket => {
         messages.push(data);
         socketServer.emit("messageLogs", messages)
     });
+
+    socket.on("userConnected", data=>{
+        console.log("User Connected: " + data.user)
+        socket.broadcast.emit("userConnected", data.user)
+    })
 });
